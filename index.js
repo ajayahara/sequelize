@@ -3,9 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const { sequelize } = require('./config/db');
 
-const authRoutes = require('./routes/authRoutes');
-const todoRoutes = require('./routes/todoRoutes');
-const subtodoRoutes = require('./routes/subtodoRoutes');
+const authRoutes = require('./routes/auth.route');
+const todoRoutes = require('./routes/todo.route');
+const subtodoRoutes = require('./routes/subTodo.route');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 app.listen(port, async () => {
   try {
     await sequelize.authenticate();
-    console.log('Connected to the database');
-    await sequelize.sync({ alter: true }); // This will ensure all models are synced with the database
+    await sequelize.sync({ alter: true });
+    console.log('Connected to the database\nTable sync complete');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }

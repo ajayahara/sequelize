@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db');
-const Subtodo = require('./Subtodo');
+const Subtodo = require('./subTodo.model');
 
 const Todo = sequelize.define('Todo', {
   title: {
